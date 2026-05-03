@@ -1,0 +1,11 @@
+{
+  "name": "@intent/registry",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@intent/core": "*",
+    "pg": "^8.0.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.0.0"
+  }
+}

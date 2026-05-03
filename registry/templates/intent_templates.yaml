@@ -1,0 +1,30 @@
+templates:
+  - id: zero-p1-bugs
+    statement_nl: "No P1 severity bugs should ever reach production"
+    criteria:
+      - metric: open_p1_issues
+        operator: eq
+        threshold: 0
+      - metric: p1_in_prod_deployment
+        operator: eq
+        threshold: 0
+    sensor_types: [github_issues, jira, sentry]
+    suggested_agents: [CodeAgent, QAAgent, CommsAgent]
+
+  - id: doc-code-sync
+    statement_nl: "Documentation always matches live code"
+    criteria:
+      - metric: doc_code_drift_score
+        operator: lt
+        threshold: 0.1
+    sensor_types: [github_commits, confluence, notion]
+    suggested_agents: [DocAgent]
+
+  - id: api-perf-p99
+    statement_nl: "API response time under 200ms p99"
+    criteria:
+      - metric: api_p99_latency_ms
+        operator: lt
+        threshold: 200
+    sensor_types: [datadog, prometheus, cloudwatch]
+    suggested_agents: [OpsAgent]
