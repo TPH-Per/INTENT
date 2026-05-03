@@ -25,9 +25,10 @@ export class EventBus {
     }
 
     while (true) {
+      // @ts-ignore - ioredis types can be tricky with xreadgroup overloads
       const results = await this.redis.xreadgroup('GROUP', group, consumer, 'BLOCK', 5000, 'COUNT', 1, 'STREAMS', stream, '>');
-      if (results) {
-        for (const [streamName, messages] of results) {
+      if (results && Array.isArray(results)) {
+        for (const [streamName, messages] of results as any[]) {
           for (const [id, [_, data]] of messages) {
             try {
               const payload = JSON.parse(data);

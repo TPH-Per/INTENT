@@ -33,7 +33,7 @@ export class SemanticStateEngineAgent {
   private isRelevant(intent: FIS, observation: StateObservation): boolean {
     // Basic rule-based scope filter for now
     // In production, this would use embedding similarity
-    return intent.criteria.some(c => c.sensorType === observation.type);
+    return intent.criteria.some((c: any) => c.sensorType === observation.type);
   }
 
   private computeGaps(intent: FIS, observation: StateObservation): IntentGap[] {

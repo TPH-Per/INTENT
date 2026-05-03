@@ -1,22 +1,27 @@
 import { 
   EventBus, 
-  IFEBuilderAgent, 
   MockLLMProvider, 
   SemanticStateEngineAgent,
   GapDecomposerAgent,
   DispatcherAgent,
   VerificationCourtAgent,
-  OrgMemoryAgent,
-  SecurityManager
+  OrgMemoryAgent
 } from '../core/src';
+import { IFEBuilderAgent } from '../registry/src/ife_builder';
 import { ConflictDetectorAgent } from '../registry/src/conflict_detector';
+
+import { Sequelize } from 'sequelize';
+import { initModels } from '../registry/src/models';
 
 async function simulate() {
   console.log('--- INTENT E2E Simulation Start ---');
   
+  const sequelize = new Sequelize('sqlite::memory:', { logging: false });
+  initModels(sequelize);
+  await sequelize.sync();
+
   const eventBus = new EventBus({ redisUrl: 'redis://localhost:6379' }); // Mocked or local
   const llm = new MockLLMProvider();
-  const security = new SecurityManager(eventBus);
   const orgMemory = new OrgMemoryAgent(eventBus);
   const conflictDetector = new ConflictDetectorAgent('mock-qdrant');
   
@@ -24,7 +29,12 @@ async function simulate() {
   const stateEngine = new SemanticStateEngineAgent({ getActiveIntents: async () => [] } as any, eventBus);
   const decomposer = new GapDecomposerAgent(llm as any, eventBus);
   const dispatcher = new DispatcherAgent(eventBus);
-  const verificationCourt = new VerificationCourtAgent(eventBus);
+  
+  const verificationCourt = new VerificationCourtAgent(
+    eventBus, 
+    stateEngine,
+    async (id) => (await llm.generateFIS(''))
+  );
 
   // 1. Register Intent
   console.log('Step 1: Registering Intent...');

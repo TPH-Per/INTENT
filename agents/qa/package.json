@@ -1,0 +1,8 @@
+{
+  "name": "@intent/agent-qa",
+  "version": "1.0.0",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.33.1",
+    "@intent/core": "*"
+  }
+}

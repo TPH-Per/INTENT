@@ -1,4 +1,5 @@
-import { IntentGap, EventBus } from './state';
+import { IntentGap } from './state';
+import { EventBus } from './event_bus';
 
 export interface MicroMission {
   id: string;

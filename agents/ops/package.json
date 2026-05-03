@@ -1,0 +1,9 @@
+{
+  "name": "@intent/agent-ops",
+  "version": "1.0.0",
+  "dependencies": {
+    "@aws-sdk/client-auto-scaling": "^3.758.0",
+    "@aws-sdk/client-cloudwatch": "^3.758.0",
+    "@intent/core": "*"
+  }
+}

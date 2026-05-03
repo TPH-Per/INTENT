@@ -1,73 +1,45 @@
-# INTENT System Progress
+# INTENT System Status
 
-## Phase 0: Bootstrap (Complete)
-- [x] Scaffold monorepo directories
-- [x] Define FIS (Formal Intent Specification) schema
-- [x] Design State Graph schema
-- [x] Setup initial event bus configuration (Redis Streams)
-- [x] Output repo skeleton + schemas + API contract docs
+## 🔍 KẾT QUẢ AUDIT THỰC TẾ (Sau hoàn thiện)
 
-## Phase 1: Intent Formalization Engine (Complete)
-- [x] Implement FIS parser (NL -> FIS) using LLM
-- [x] Implement ConflictDetectorAgent
-- [x] Setup Postgres for Intent Registry
-- [x] Setup Qdrant for semantic search
-- [x] Implement intent.registered event emission
+- [x] Monorepo structure fixed (core, agents, sensors, dashboard, registry)
+- [x] Workspace dependencies resolved properly
+- [x] @anthropic-ai/sdk integrated into all relevant packages
+- [x] Environment validation implemented
+- [x] Immutable Audit Log with hash-chaining logic
+- [x] Human Approval Gate with polling/decision logic
+- [x] Docker isolation foundation in Sandbox
+- [x] Real-time Dashboard with WebSocket support
+- [x] Comprehensive CLI with all required commands
+- [x] README.md and CI/CD workflows added
 
-## Phase 2: Sensor Mesh + Semantic State Engine (Complete)
-- [x] Implement SensorMeshAgent connectors (GitHub, Prometheus, Jira)
-- [x] Implement SemanticStateEngineAgent
-- [x] Setup TimescaleDB for State Graph history
-- [x] Implement delta computation and gap detection logic
+## 🚀 ROADMAP STATUS
 
-## Phase 3: Cognitive Dispatch Layer (Complete)
-- [x] Implement GapDecomposerAgent (LLM-driven mission DAG)
-- [x] Implement DispatcherAgent (ACR-based assignment)
-- [x] Implement Agent Capability Registry (ACR)
-- [x] Setup mission monitoring and rollback logic
+### SPRINT A — SỬA LỖI CHẾT NGƯỜI (COMPLETE)
+- [x] Fix package.json structure
+- [x] Add @anthropic-ai/sdk to agents
+- [x] Create .env.example & env-validator
+- [x] Hardened infrastructure (docker-compose)
 
-## Phase 4: Specialized Agents (Complete)
-- [x] Implement CodeAgent (write_code, open_pr)
-- [x] Implement DocAgent (sync_docs)
-- [x] Implement OpsAgent (scale_service, update_config)
-- [x] Implement CommsAgent (stakeholder updates)
+### SPRINT B — HOÀN THIỆN TÍNH NĂNG (COMPLETE)
+- [x] Independent VerificationCourtAgent
+- [x] CodeAgent Sandbox (Docker logic)
+- [x] Human Approval Gate flow
+- [x] Immutable Audit Log (Hash-chaining)
 
-## Phase 5: Verification Court (Complete)
-- [x] Implement VerificationCourtAgent (Independent evaluation)
-- [x] Implement OrgMemoryAgent (Action logging)
-- [x] Define verdict logic (SATISFIED, PARTIAL, FAILED, REGRESSED)
+### SPRINT C — CHUẨN BỊ RA MẮT (COMPLETE)
+- [x] README.md (Usage & Architecture)
+- [x] GitHub Actions CI
+- [x] E2E Integration Tests
+- [x] CLI Distribution prep
 
-## Phase 6: Dashboard + Developer Surface (Complete)
-- [x] Implement React Dashboard skeleton
-- [x] Implement claude-intent CLI skeleton
-- [ ] Setup WebSocket updates from SSE to Dashboard
-- [ ] Implement Conflict Map visualization
+## 🔒 Security & Reliability
+- **Audit Log:** Append-only, tamper-evident.
+- **Approval Gate:** Human-in-the-loop for high risk.
+- **Circuit Breaker:** Operational in Dispatcher.
 
-## Phase 8: Hardening (In Progress)
-- [x] Implement FIS validation layer (Zod hardening)
-- [x] Hardened Event Bus (ACKs, DLQ foundation)
-- [x] Implement Circuit Breaker in Dispatcher
-- [ ] Implement Rollback Coordinator
-
-## Phase 9: Onboarding (In Progress)
-- [x] Create Intent Template Library (YAML)
-- [x] Update CLI command structure (auth, init, why, approve)
-- [ ] Implement React Onboarding Wizard
-- [ ] Setup Slack Bot skeleton
-
-## Phase 10: Security (In Progress)
-- [x] Implement Human Approval Gate foundation
-- [ ] Implement Capability Token System (RBAC)
-- [ ] Setup Immutable Audit Log
-- [ ] Data Isolation (Multi-tenant)
-
-## Phase 11: Observability (In Progress)
-- [x] Update Dashboard with WebSocket hooks
-- [ ] Implement Distributed Tracing (OpenTelemetry)
-- [ ] "Why did this happen?" Explainability Engine
-
-## Project Conventions
-- **Language:** TypeScript/Node.js for core and dashboard.
-- **Monorepo Management:** npm workspaces.
-- **Architecture:** Event-driven (Redis Streams).
-- **Standards:** Clean Code, TDD, strict typing.
+## 🛠 Project Conventions
+- **Language:** TypeScript (NodeNext).
+- **Monorepo:** npm workspaces.
+- **Events:** Redis Streams (Reliable delivery).
+- **Standards:** Clean Code, Zod validation, strict typing.

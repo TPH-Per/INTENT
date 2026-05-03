@@ -1,0 +1,9 @@
+{
+  "name": "@intent/agent-code",
+  "version": "1.0.0",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.33.1",
+    "@octokit/rest": "^21.1.1",
+    "@intent/core": "*"
+  }
+}
